@@ -1,0 +1,135 @@
+.register {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 10px;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .regtitle {
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+}
+
+.container .regtitle::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    background: #9b59b6;
+}
+
+.container form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .user-details .input-box {
+    margin-bottom: 15px;
+    width: calc(100% /2 - 20px);
+}
+
+.user-details .input-box .details {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container form .user-details input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 3px solid purple;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.container form .user-details input:focus,
+.container form .user-details input:valid {
+    border-color: black;
+}
+
+form .gender-details .gender-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .gender-details .category {
+    display: flex;
+    width: 80%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+
+.gender-details .category label {
+    display: flex;
+    align-items: center;
+}
+
+.gender-details .category .dot {
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+}
+
+form .button input {
+    height: 50px;
+    width: 100%;
+    outline: none;
+    color: white;
+    border: none;
+    font-size: 25px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background-color: black;
+    font-weight: bold;
+}
+
+form .button input:hover {
+    background: purple;
+}
+
+@media (max-with: 584) {
+    .container {
+        max-width: 100%;
+    }
+    form .user-details .input-box {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container form .user-details {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+}
+
+.text {
+    align-items: center;
+}
+
+#reglinks {
+    margin-left: 2px;
+    color: purple;
+}

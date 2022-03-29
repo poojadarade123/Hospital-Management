@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.card {
+    margin-top: 80px;
+    border: none;
+}
+
+.icon {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+}
+
+.icon:hover {
+    color: lightskyblue;
+}
+
+.title {
+    text-align: center;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
