@@ -16,24 +16,18 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userId;
-	
-	@Column(length=30, nullable=false)
-	@Size(min=5, message="Name should be minimum 5 characters ")
-	private String userName;
+	private int userId;
 	
 	@Column(length=20, nullable=false)
 	@Size(min=8, message="Name should be minimum 8 characters ")
 	private String password;
 	
-	@Column(length=30, nullable=false)
-	private String firstName;
+	@Column(length = 20, nullable = false)
+	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	private String confirmPassword;
 	
-	@Column(length=30)
-	private String middleName;
-	
-	@Column(length=30, nullable=false)
-	private String lastName;
+	@Column(nullable = false)
+	private String Name;
 	
 	@Column(nullable=false)
 	private String gender;
@@ -44,8 +38,6 @@ public class Doctor {
 	@Column(length=10, nullable=false)
 	@Size(min=10)
 	private long mobileNo;
-	
-	private String address;
 	
 	@Column(nullable=false)
 	private String speciality;
@@ -65,18 +57,10 @@ public class Doctor {
 	@Column(nullable=false)
 	private Time leavingTime;
 
-	public long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -85,28 +69,20 @@ public class Doctor {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getConfirmPassword() {
+		return confirmPassword;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 
-	public String getMiddleName() {
-		return middleName;
+	public String getName() {
+		return Name;
 	}
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		Name = name;
 	}
 
 	public String getGender() {
@@ -131,14 +107,6 @@ public class Doctor {
 
 	public void setMobileNo(long mobileNo) {
 		this.mobileNo = mobileNo;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getSpeciality() {
@@ -188,16 +156,4 @@ public class Doctor {
 	public void setLeavingTime(Time leavingTime) {
 		this.leavingTime = leavingTime;
 	}
-
-	@Override
-	public String toString() {
-		return "Doctor [userId=" + userId + ", userName=" + userName + ", password=" + password + ", firstName="
-				+ firstName + ", middleName=" + middleName + ", lastName=" + lastName + ", gender=" + gender
-				+ ", email=" + email + ", mobileNo=" + mobileNo + ", address=" + address + ", speciality=" + speciality
-				+ ", qualification=" + qualification + ", experience=" + experience + ", availableWeekDays="
-				+ availableWeekDays + ", arrivalTime=" + arrivalTime + ", leavingTime="
-				+ leavingTime + "]";
-	}
-
-	
 }
