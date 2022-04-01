@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
-import com.springboot.app.model.User;
-import com.springboot.app.repository.UserRepository;
+import com.springboot.app.entities.User;
 import com.springboot.app.service.UserService;
+
 
 @CrossOrigin
 @RestController
@@ -40,7 +41,31 @@ public class UserController {
 		return userService.saveUsers(user);
 	}
 	
+	@PostMapping("/login")
+    public boolean loginUser(@RequestBody User user) {  
+    
+		boolean checkingLogin=userService.validate(user);
+		
+		if(checkingLogin) {
+			System.out.println("login successfull");
+		    return true;
+		}
+		System.out.println("login failed");
+		return false;
 	
+	    }
+	
+	@PostMapping("/emailExists")
+	public boolean checkIfEmailExists(@RequestBody User user ){
+		Boolean emailExists=userService.checkIfEmailExists(user);
+		if(emailExists==true)
+		{
+			System.out.println("DUPLICATE_EMAIL");
+			return false;
+		}
+		System.out.println("UNIQUE_EMAIL");
+		return true;
+	}
 	
 	
 	

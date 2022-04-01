@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.app.model.User;
+import com.springboot.app.entities.User;
 import com.springboot.app.repository.UserRepository;
 
 @Service
@@ -63,6 +63,33 @@ public class UserServiceImpl implements UserService {
             return 1;
 		
 	}
+
+	@Override
+	public boolean validate(User user) {
+		
+		String email = user.getEmail();
+		String password = user.getPassword(); 
+		
+		User validUser=userRepository.findByEmailAndPassword(email, password);
+		
+		if(validUser!=null)
+			return true;
+		
+		return false;
+	}
+
+	@Override
+	public boolean checkIfEmailExists(User user) {
+		
+		String email = user.getEmail();
+		boolean validEmail=userRepository.existsByEmail(email);
+		if(validEmail)
+			return true;
+		
+		return false;
+	}
+
+	
 
 	
 
