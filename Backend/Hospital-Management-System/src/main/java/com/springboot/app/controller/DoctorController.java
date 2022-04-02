@@ -14,7 +14,7 @@ import com.springboot.app.model.Doctor;
 import com.springboot.app.service.DoctorService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class DoctorController {

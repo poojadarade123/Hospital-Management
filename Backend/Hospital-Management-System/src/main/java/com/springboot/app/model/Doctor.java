@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name = "doctors")
@@ -18,43 +22,44 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
-	@Column(length=20, nullable=false)
+	@Column(length=20)
+	@NotNull
 	@Size(min=8, message="Name should be minimum 8 characters ")
 	private String password;
 	
-	@Column(length = 20, nullable = false)
+	@Column(length = 20)
 	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@NotNull
 	private String confirmPassword;
 	
-	@Column(nullable = false)
+	@NotNull
 	private String Name;
 	
-	@Column(nullable=false)
-	private String gender;
-	
-	@Column(nullable=false)
+	@NotNull
 	private String email;
 	
-	@Column(length=10, nullable=false)
+	@Column(length=10)
 	@Size(min=10)
+	@NotNull
 	private long mobileNo;
 	
-	@Column(nullable=false)
+	@NotNull
 	private String speciality;
 	
-	@Column(nullable=false)
+	@NotNull
 	private String qualification;
 	
-	@Column(nullable=false)
+	@NotNull
 	private int experience;
 	
-	@Column(nullable=false)
-	private String availableWeekDays;
-	
-	@Column(nullable=false)
+	@NotNull
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
 	private Time arrivalTime; 
 	
-	@Column(nullable=false)
+	@NotNull
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
 	private Time leavingTime;
 
 	public int getUserId() {
@@ -85,13 +90,6 @@ public class Doctor {
 		Name = name;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 
 	public String getEmail() {
 		return email;
@@ -131,14 +129,6 @@ public class Doctor {
 
 	public void setExperience(int experience) {
 		this.experience = experience;
-	}
-
-	public String getAvailableWeekDays() {
-		return availableWeekDays;
-	}
-
-	public void setAvailableWeekDays(String availableWeekDays) {
-		this.availableWeekDays = availableWeekDays;
 	}
 
 	public Time getArrivalTime() {

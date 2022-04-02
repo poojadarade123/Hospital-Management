@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 
 import com.springboot.app.model.User;
-import com.springboot.app.repository.UserRepository;
 import com.springboot.app.service.UserService;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -39,10 +38,4 @@ public class UserController {
     public int PostUser(@RequestBody User user) {
 		return userService.saveUsers(user);
 	}
-	
-	
-	
-	
-	
-
 }

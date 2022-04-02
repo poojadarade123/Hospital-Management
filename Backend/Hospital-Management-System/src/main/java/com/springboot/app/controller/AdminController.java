@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.app.model.Admin;
 import com.springboot.app.service.AdminService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class AdminController {

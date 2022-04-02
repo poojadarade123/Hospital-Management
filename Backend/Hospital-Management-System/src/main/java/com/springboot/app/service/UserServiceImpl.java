@@ -35,9 +35,8 @@ public class UserServiceImpl implements UserService {
 		String name = user.getName();
 		String email = user.getEmail();
 		String address = user.getAddress();
-		long mobileNo = user.getMobileNo();
+		String mobileNo = user.getMobileNo();
 		int age = user.getAge();
-		String gender = user.getGender();
 		String bloodGroup = user.getBloodGroup();
 		
 		User n = new User();
@@ -49,7 +48,6 @@ public class UserServiceImpl implements UserService {
         n.setAddress(address);
         n.setMobileNo(mobileNo);
         n.setAge(age);
-        n.setGender(gender);
         n.setBloodGroup(bloodGroup);
         
         User result = userRepository.save(n); 
@@ -61,6 +59,7 @@ public class UserServiceImpl implements UserService {
     		} 
             
             return 1;
+            
 		
 	}
 

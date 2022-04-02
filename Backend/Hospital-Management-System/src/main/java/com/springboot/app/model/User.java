@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "users")
@@ -17,34 +19,34 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 20)
 	@Size(min = 5, message = "Name should be minimum 8 characters ")
 	private String password;
 	
-	@Column(length = 20, nullable = false)
+	@Column(length = 20)
+	@NotEmpty
 	@Size(min = 5, message = "Name should be minimum 8 characters ")
 	private String confirmPassword;
 
-	@Column(nullable = false)
+	@NotNull
 	private String Name;
-
-	@Column(nullable = false)
+	
+	@NotNull
 	private String email;
     
 	@NotNull
 	private String address;
 
-	@Column(length =10,nullable = false)
+	@Column(length =10)
+	@NotNull
 	@Size(min = 10)
 	//@Pattern(regexp="(^$|[0-9]{10})")
-	private long mobileNo;
+	private String mobileNo;
 
+	@NotNull
 	private int age;
 
-	@Column(nullable = false)
-	private String gender;
-
-	@Column(nullable = false)
+	@NotNull
 	private String bloodGroup;
 
 	public int getUserId() {
@@ -95,11 +97,11 @@ public class User {
 		this.address = address;
 	}
 
-	public long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
@@ -109,14 +111,6 @@ public class User {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public String getBloodGroup() {
