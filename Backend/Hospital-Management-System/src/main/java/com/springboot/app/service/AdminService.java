@@ -12,5 +12,7 @@ public interface AdminService {
 	public Admin getAdminById(int adminId);
 	
 	public int saveAdmins(Admin admin);
+	
+	public boolean validate(Admin admin);
 
 }

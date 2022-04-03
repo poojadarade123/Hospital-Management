@@ -40,4 +40,18 @@ public class AdminController {
 		return adminService.saveAdmins(admin);
 	}
 	
+	@PostMapping("/adminLogin")
+    public boolean loginAdmin(@RequestBody Admin admin) {  
+    
+		boolean checkingLogin=adminService.validate(admin);
+		
+		if(checkingLogin) {
+			System.out.println("login successfull");
+		    return true;
+		}
+		System.out.println("login failed");
+		return false;
+	
+	    }
+	
 }
