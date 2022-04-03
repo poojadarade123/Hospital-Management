@@ -18,34 +18,31 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
-	@Column(length = 20, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String password;
 	
-	@Column(length = 20, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String confirmPassword;
 
-	@Column(nullable = false)
-	private String Name;
+	@NotNull
+	private String name;
 
-	@Column(nullable = false)
+	@NotNull
 	private String email;
     
 	@NotNull
 	private String address;
-
-	@Column(length =10,nullable = false)
-	@Size(min = 10)
-	//@Pattern(regexp="(^$|[0-9]{10})")
-	private long mobileNo;
-
+	
+	@NotNull
 	private int age;
 
-	@Column(nullable = false)
-	private String gender;
+	@Column(length =10)
+	@NotNull
+	private String mobileNo;
 
-	@Column(nullable = false)
+	@NotNull
 	private String bloodGroup;
 
 	public int getUserId() {
@@ -73,11 +70,11 @@ public class User {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -96,12 +93,21 @@ public class User {
 		this.address = address;
 	}
 
-	public long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
+	}
+
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
 	}
 
 	public int getAge() {
@@ -111,22 +117,8 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getBloodGroup() {
-		return bloodGroup;
-	}
-
-	public void setBloodGroup(String bloodGroup) {
-		this.bloodGroup = bloodGroup;
-	}
+	
+	
 
 
 	

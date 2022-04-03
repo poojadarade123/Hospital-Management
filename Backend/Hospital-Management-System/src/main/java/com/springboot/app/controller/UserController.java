@@ -17,7 +17,7 @@ import com.springboot.app.entities.User;
 import com.springboot.app.service.UserService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -42,16 +42,16 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-    public boolean loginUser(@RequestBody User user) {  
+    public int loginUser(@RequestBody User user) {  
     
 		boolean checkingLogin=userService.validate(user);
 		
 		if(checkingLogin) {
 			System.out.println("login successfull");
-		    return true;
+		    return 0;
 		}
 		System.out.println("login failed");
-		return false;
+		return 1;
 	
 	    }
 	

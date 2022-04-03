@@ -1,5 +1,8 @@
 package com.springboot.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.sql.Time;
 
 import javax.persistence.Column;
@@ -8,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -18,43 +22,45 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int doctorId;
 	
-	@Column(length=20, nullable=false)
-	@Size(min=8, message="Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String password;
 	
-	@Column(length = 20, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String confirmPassword;
 	
-	@Column(nullable = false)
-	private String Name;
+	@NotNull
+	private String name;
 	
-	@Column(nullable=false)
-	private String gender;
 	
-	@Column(nullable=false)
+	
+	@NotNull
 	private String email;
 	
-	@Column(length=10, nullable=false)
-	@Size(min=10)
-	private long mobileNo;
+	@Column(length=10)
+	@NotNull
+	private String mobileNo;
 	
-	@Column(nullable=false)
+	@NotNull
 	private String speciality;
 	
-	@Column(nullable=false)
+	@NotNull
 	private String qualification;
 	
-	@Column(nullable=false)
+	@NotNull
 	private int experience;
 	
-	@Column(nullable=false)
-	private String availableWeekDays;
 	
-	@Column(nullable=false)
+	
+	@NotNull
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
 	private Time arrivalTime; 
 	
-	@Column(nullable=false)
+	@NotNull
+	@JsonFormat(pattern = "HH:mm")
+	@JsonDeserialize(using = SqlTimeDeserializer.class)
 	private Time leavingTime;
 
 	public int getDoctorId() {
@@ -78,20 +84,14 @@ public class Doctor {
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -101,11 +101,11 @@ public class Doctor {
 		this.email = email;
 	}
 
-	public long getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
 
-	public void setMobileNo(long mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 
@@ -133,13 +133,7 @@ public class Doctor {
 		this.experience = experience;
 	}
 
-	public String getAvailableWeekDays() {
-		return availableWeekDays;
-	}
-
-	public void setAvailableWeekDays(String availableWeekDays) {
-		this.availableWeekDays = availableWeekDays;
-	}
+	
 
 	public Time getArrivalTime() {
 		return arrivalTime;

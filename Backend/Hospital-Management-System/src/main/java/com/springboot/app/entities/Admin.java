@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -15,19 +16,19 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int adminId;
 	
-	@Column(length = 30, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 5 characters ")
+	@Column(length = 30)
+	@NotNull
 	private String name;
 
-	@Column(length = 20, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String password;
 	
-	@Column(length = 20, nullable = false)
-	@Size(min = 5, message = "Name should be minimum 8 characters ")
+	@Column(length = 20)
+	@NotNull
 	private String confirmPassword;
 
-	@Column(nullable = false)
+	@NotNull
 	private String email;
 	
 

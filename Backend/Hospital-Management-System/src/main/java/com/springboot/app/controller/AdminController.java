@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.app.entities.Admin;
 import com.springboot.app.service.AdminService;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class AdminController {
@@ -41,16 +41,16 @@ public class AdminController {
 	}
 	
 	@PostMapping("/adminLogin")
-    public boolean loginAdmin(@RequestBody Admin admin) {  
+    public int loginAdmin(@RequestBody Admin admin) {  
     
 		boolean checkingLogin=adminService.validate(admin);
 		
 		if(checkingLogin) {
 			System.out.println("login successfull");
-		    return true;
+		    return 0;
 		}
 		System.out.println("login failed");
-		return false;
+		return 1;
 	
 	    }
 	
