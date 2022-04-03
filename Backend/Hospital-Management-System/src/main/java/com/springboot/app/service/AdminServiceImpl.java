@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.app.model.Admin;
+import com.springboot.app.entities.Admin;
 import com.springboot.app.repository.AdminRepository;
 
 @Service
@@ -51,6 +51,19 @@ public class AdminServiceImpl implements AdminService {
             
             return 1;
 		
+	}
+
+	@Override
+	public boolean validate(Admin admin) {
+		String email = admin.getEmail();
+		String password = admin.getPassword(); 
+		
+		Admin validAdmin=adminRepository.findByEmailAndPassword(email, password);
+		
+		if(validAdmin!=null)
+			return true;
+		
+		return false;
 	}
 
 }
