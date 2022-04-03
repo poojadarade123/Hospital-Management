@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.app.model.Admin;
+import com.springboot.app.entities.Admin;
 import com.springboot.app.repository.AdminRepository;
 
 @Service

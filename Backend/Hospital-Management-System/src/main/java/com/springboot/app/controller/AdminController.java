@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.app.model.Admin;
+import com.springboot.app.entities.Admin;
 import com.springboot.app.service.AdminService;
 
 @CrossOrigin
