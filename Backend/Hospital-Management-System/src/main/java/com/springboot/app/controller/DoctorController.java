@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.springboot.app.model.Doctor;
+import com.springboot.app.entities.Doctor;
 import com.springboot.app.service.DoctorService;
 
 
@@ -36,4 +36,27 @@ public class DoctorController {
     public int PostDoctor(@RequestBody Doctor doctor) {
 		return doctorService.saveDoctors(doctor);
 	}
+	
+	@PostMapping("/doctorLogin")
+	public boolean loginDoctor(@RequestBody Doctor doctor) {
+		boolean checkingLogin= doctorService.validate(doctor);
+		
+		if(checkingLogin) {
+			System.out.println("login successfull");
+		    return true;
+		}
+		System.out.println("login failed");
+		return false;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

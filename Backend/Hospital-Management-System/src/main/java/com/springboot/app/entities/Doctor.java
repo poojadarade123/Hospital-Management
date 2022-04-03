@@ -1,4 +1,4 @@
-package com.springboot.app.model;
+package com.springboot.app.entities;
 
 import java.sql.Time;
 
@@ -16,7 +16,7 @@ public class Doctor {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private int doctorId;
 	
 	@Column(length=20, nullable=false)
 	@Size(min=8, message="Name should be minimum 8 characters ")
@@ -57,8 +57,8 @@ public class Doctor {
 	@Column(nullable=false)
 	private Time leavingTime;
 
-	public int getUserId() {
-		return userId;
+	public int getDoctorId() {
+		return doctorId;
 	}
 	
 	public String getPassword() {

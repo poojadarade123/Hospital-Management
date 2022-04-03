@@ -3,7 +3,7 @@ package com.springboot.app.service;
 import java.sql.Time;
 import java.util.List;
 
-import com.springboot.app.model.Doctor;
+import com.springboot.app.entities.Doctor;
 import com.springboot.app.repository.DoctorRepository;
 
 import org.springframework.stereotype.Service;
@@ -65,5 +65,18 @@ public class DoctorServiceImpl implements DoctorService{
 		}
 		return 1;
 		
+	}
+
+	@Override
+	public boolean validate(Doctor doctor) {
+		String email = doctor.getEmail();
+		String password = doctor.getPassword();
+		
+		Doctor validDoctor = doctorRepository.findByEmailAndPassword(email, password);
+		
+		if(validDoctor!=null)
+			return true;
+		
+		return false;
 	}
 }

@@ -2,7 +2,7 @@ package com.springboot.app.service;
 
 import java.util.List;
 
-import com.springboot.app.model.Doctor;
+import com.springboot.app.entities.Doctor;
 
 public interface DoctorService {
 	
@@ -11,5 +11,7 @@ public interface DoctorService {
 	public Doctor getDoctorById(int doctorId);
 	
 	public int saveDoctors(Doctor doctor);
+	
+	public boolean validate(Doctor doctor);
 
 }
