@@ -8,5 +8,5 @@ import com.springboot.app.entities.Admin;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin,Integer> {
 
-	Admin findByEmailAndPassword(String email,String password);
+	Admin findByEmailAndPassword(String email, String password);
 }

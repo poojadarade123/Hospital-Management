@@ -65,5 +65,32 @@ public class AdminServiceImpl implements AdminService {
 		
 		return false;
 	}
+	
+	@Override
+	public int updateAdmin(int adminId, Admin admin) {
+		Admin admin1 = adminRepository.findById(adminId).orElse(null);
+		   
+		admin1.setName(admin.getName());
+		admin1.setPassword(admin.getPassword());
+		admin1.setConfirmPassword(admin.getConfirmPassword());
+		admin1.setEmail(admin.getEmail());
+		   
+		Admin result = adminRepository.save(admin1);
+		  
+		   if(result != null) {
+				System.out.println("Record updated");
+				return 0;
+				
+				} 
+		   
+		return 1;
+	}
+
+	@Override
+	public int deleteAdmin(int adminId) {
+		adminRepository.deleteById(adminId);
+		System.out.println("Admin Deleted");
+		return 0;
+	}
 
 }
