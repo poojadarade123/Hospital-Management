@@ -4,9 +4,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +29,7 @@ public class DoctorController {
 		return doctorService.allDoctors();
 	}
 	
-	@GetMapping("/updateByDoctorid/{doctorId}")
+	@GetMapping("/getByDoctorid/{doctorId}")
 	public Doctor getDoctor(@PathVariable Integer doctorId)
 	{
 		return doctorService.getDoctorById(doctorId);
@@ -39,24 +41,17 @@ public class DoctorController {
 	
 	@PostMapping("/doctorLogin")
 	public int loginDoctor(@RequestBody Doctor doctor) {
-		boolean checkingLogin= doctorService.validate(doctor);
-		
-		if(checkingLogin) {
-			System.out.println("login successfull");
-		    return 0;
-		}
-		System.out.println("login failed");
-		return 1;
-		
+		return doctorService.validate(doctor);
 	}
 	
+	@PutMapping("/editDoctor/{doctorId}")
+	public int update(@PathVariable int doctorId, @RequestBody Doctor doctor) {
+		return doctorService.updateDoctor(doctorId, doctor);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@DeleteMapping("/deleteDoctor/{doctorId}")
+	public int delete(@PathVariable int doctorId) {
+		return doctorService.deleteDoctor(doctorId);
+	}
 	
 }

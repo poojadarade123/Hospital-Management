@@ -12,6 +12,10 @@ public interface DoctorService {
 	
 	public int saveDoctors(Doctor doctor);
 	
-	public boolean validate(Doctor doctor);
+	public int validate(Doctor doctor);
+	
+	public int updateDoctor(int doctorId, Doctor doctor);
+	
+	public int deleteDoctor(int doctorId);
 
 }
