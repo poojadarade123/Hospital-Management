@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         User result = userRepository.save(n); 
         
         if(result != null) {
-    		System.out.print("Record inserted");
+    		System.out.println("Record inserted");
     		return 0;
     		
     		} 
@@ -63,17 +63,21 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean validate(User user) {
+	public int validate(User user) {
 		
 		String email = user.getEmail();
 		String password = user.getPassword(); 
 		
 		User validUser=userRepository.findByEmailAndPassword(email, password);
 		
-		if(validUser!=null)
-			return true;
-		
-		return false;
+		if(validUser!=null) {
+			System.out.println("login successfull");
+		    return 0;
+		}
+		else {
+		System.out.println("login failed");
+		return 1;
+		}
 	}
 
 	@Override
@@ -81,10 +85,44 @@ public class UserServiceImpl implements UserService {
 		
 		String email = user.getEmail();
 		boolean validEmail=userRepository.existsByEmail(email);
-		if(validEmail)
-			return true;
-		
-		return false;
+		if(validEmail==true)
+		{
+			System.out.println("DUPLICATE_EMAIL");
+			return false;
+		}
+		System.out.println("UNIQUE_EMAIL");
+		return true;
+	}
+
+	@Override
+	public int updateUser(int userId, User user) {
+		   User user1 = userRepository.findById(userId).orElse(null);
+		   
+		   user1.setName(user.getName());
+		   user1.setPassword(user.getPassword());
+		   user1.setConfirmPassword(user.getConfirmPassword());
+		   user1.setEmail(user.getEmail());
+		   user1.setAddress(user.getAddress());
+		   user1.setMobileNo(user.getMobileNo());
+		   user1.setAge(user.getAge());
+		   user1.setBloodGroup(user.getBloodGroup());
+		   
+		   User result = userRepository.save(user1);
+		  
+		   if(result != null) {
+				System.out.println("Record updated");
+				return 0;
+				
+				} 
+		   
+		return 1;
+	}
+
+	@Override
+	public int deleteUser(int userId) {
+		userRepository.deleteById(userId);
+		System.out.println("User Deleted");
+		return 0;
 	}
 
 	
