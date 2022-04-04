@@ -14,7 +14,7 @@ import com.springboot.app.entities.Doctor;
 import com.springboot.app.service.DoctorService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class DoctorController {
@@ -38,15 +38,15 @@ public class DoctorController {
 	}
 	
 	@PostMapping("/doctorLogin")
-	public boolean loginDoctor(@RequestBody Doctor doctor) {
+	public int loginDoctor(@RequestBody Doctor doctor) {
 		boolean checkingLogin= doctorService.validate(doctor);
 		
 		if(checkingLogin) {
 			System.out.println("login successfull");
-		    return true;
+		    return 0;
 		}
 		System.out.println("login failed");
-		return false;
+		return 1;
 		
 	}
 	

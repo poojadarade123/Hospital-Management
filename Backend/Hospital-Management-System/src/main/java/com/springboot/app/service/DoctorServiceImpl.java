@@ -34,12 +34,10 @@ public class DoctorServiceImpl implements DoctorService{
 		String confirmPassword = doctor.getConfirmPassword();
 		String name = doctor.getName();
 		String email = doctor.getEmail();
-		long mobileNo = doctor.getMobileNo();
-		String gender = doctor.getGender();
+		String mobileNo = doctor.getMobileNo();
 		String speciality = doctor.getSpeciality();
 		int experience = doctor.getExperience();
 		String qualification = doctor.getQualification();
-		String availableWeekDays = doctor.getAvailableWeekDays();
 		Time arrivalTime = doctor.getArrivalTime();
 		Time leavingTime = doctor.getLeavingTime();
 		
@@ -50,11 +48,11 @@ public class DoctorServiceImpl implements DoctorService{
 		n.setName(name);
 		n.setEmail(email);
 		n.setMobileNo(mobileNo);
-		n.setGender(gender);
+		
 		n.setSpeciality(speciality);
 		n.setExperience(experience);
 		n.setQualification(qualification);
-		n.setAvailableWeekDays(availableWeekDays);
+		
 		n.setArrivalTime(arrivalTime);
 		n.setLeavingTime(leavingTime);
 		

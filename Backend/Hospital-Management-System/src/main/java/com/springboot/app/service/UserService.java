@@ -12,8 +12,12 @@ public interface UserService {
 	
 	public int saveUsers(User user);
 	
-	public boolean validate(User user);
+	public int validate(User user);
 	
 	public boolean checkIfEmailExists(User user);
+	
+	public int updateUser(int userId,User user);
+	
+	public int deleteUser(int userId);
 
 }
