@@ -31,7 +31,7 @@ public class AdminController {
 		return adminService.allAdmins();
 	}
 	
-	@GetMapping("/updateByAdminid/{adminId}")
+	@GetMapping("/getByAdminid/{adminId}")
 	public Admin getAdmin(@PathVariable Integer adminId)
 	{
 		return adminService.getAdminById(adminId);
@@ -45,16 +45,8 @@ public class AdminController {
 	@PostMapping("/adminLogin")
     public int loginAdmin(@RequestBody Admin admin) {  
     
-		boolean checkingLogin=adminService.validate(admin);
-		
-		if(checkingLogin) {
-			System.out.println("login successfull");
-		    return 0;
-		}
-		System.out.println("login failed");
-		return 1;
-	
-	    }
+		return adminService.validate(admin);
+	}
 	
 	@PutMapping("/editAdmin/{adminId}")
 	public int update(@PathVariable int adminId, @RequestBody Admin admin) {
