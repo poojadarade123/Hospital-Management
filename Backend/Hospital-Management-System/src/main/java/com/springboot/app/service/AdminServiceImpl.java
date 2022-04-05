@@ -54,16 +54,20 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean validate(Admin admin) {
+	public int validate(Admin admin) {
 		String email = admin.getEmail();
 		String password = admin.getPassword(); 
 		
 		Admin validAdmin=adminRepository.findByEmailAndPassword(email, password);
 		
-		if(validAdmin!=null)
-			return true;
-		
-		return false;
+		if(validAdmin!=null){
+			System.out.println("login successfull");
+		    return 0;
+		}
+		else {
+		System.out.println("login failed");
+		return 1;
+		}
 	}
 	
 	@Override
