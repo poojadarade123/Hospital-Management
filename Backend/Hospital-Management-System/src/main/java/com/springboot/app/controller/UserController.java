@@ -50,8 +50,6 @@ public class UserController {
 
 	}
 
-	
-
 	@PostMapping("/emailExists")
 	public boolean checkIfEmailExists(@RequestBody User user) {
 		return userService.checkIfEmailExists(user);

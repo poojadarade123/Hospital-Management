@@ -34,6 +34,11 @@ public class DoctorController {
 	{
 		return doctorService.getDoctorById(doctorId);
 	}
+	@GetMapping("/getDoctorByName/{name}")
+	public List<Doctor> getDoctorByName(@PathVariable String name){
+		return doctorService.getDoctorByName(name);
+	}	
+	
 	@PostMapping(value="/registerDoctors" , consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public int PostDoctor(@RequestBody Doctor doctor) {
 		return doctorService.saveDoctors(doctor);
