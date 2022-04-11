@@ -111,4 +111,10 @@ public class DoctorServiceImpl implements DoctorService{
 		System.out.println("Doctor Deleted");
 		return 0;
 	}
+
+	@Override
+	public List<Doctor> getDoctorByName(String name) {
+		return doctorRepository.findDoctorByName(name);
+	}
+
 }
