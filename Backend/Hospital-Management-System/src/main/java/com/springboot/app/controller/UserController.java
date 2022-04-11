@@ -59,12 +59,12 @@ public class UserController {
 	}
 
 	@PutMapping("/editUser/{userId}")
-	public int update(@PathVariable int userId, @RequestBody User user) {
+	public int updateUser(@PathVariable int userId, @RequestBody User user) {
 		return userService.updateUser(userId, user);
 	}
 	
 	@DeleteMapping("/deleteUser/{userId}")
-    public int delete(@PathVariable int userId) { 		
+    public int deleteUser(@PathVariable int userId) { 		
 		return userService.deleteUser(userId);
         
     }  

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -28,19 +29,23 @@ public class User {
 	private String name;
 
 	@NotNull
+	@Column(unique=true)
 	private String email;
     
 	@NotNull
 	private String address;
 	
-	@NotNull
+	
 	private int age;
-
-	@Column(length =10)
+	
+	
 	@NotNull
+	@Size(min=10,max=10)
+	//@Min(10)
+	@Column(unique=true)
 	private String mobileNo;
 
-	@NotNull
+	
 	private String bloodGroup;
 
 	public int getUserId() {
