@@ -1,10 +1,5 @@
 package com.springboot.app.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import java.sql.Time;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,12 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "doctors")
 public class Doctor {
 	
+	private static final String unique = null;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int doctorId;
@@ -36,10 +33,12 @@ public class Doctor {
 	
 	
 	@NotNull
+	
 	private String email;
 	
 	@Column(length=10)
 	@NotNull
+	
 	private String mobileNo;
 	
 	@NotNull
@@ -49,19 +48,13 @@ public class Doctor {
 	private String qualification;
 	
 	@NotNull
-	private int experience;
-	
-	
+	private int experience;	
 	
 	@NotNull
-	@JsonFormat(pattern = "HH:mm")
-	@JsonDeserialize(using = SqlTimeDeserializer.class)
-	private Time arrivalTime; 
+	private String arrivalTime; 
 	
 	@NotNull
-	@JsonFormat(pattern = "HH:mm")
-	@JsonDeserialize(using = SqlTimeDeserializer.class)
-	private Time leavingTime;
+	private String leavingTime;
 
 	public int getDoctorId() {
 		return doctorId;
@@ -135,19 +128,19 @@ public class Doctor {
 
 	
 
-	public Time getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(Time arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public Time getLeavingTime() {
+	public String getLeavingTime() {
 		return leavingTime;
 	}
 
-	public void setLeavingTime(Time leavingTime) {
+	public void setLeavingTime(String leavingTime) {
 		this.leavingTime = leavingTime;
 	}
 }

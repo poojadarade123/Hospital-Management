@@ -38,8 +38,8 @@ public class DoctorServiceImpl implements DoctorService{
 		String speciality = doctor.getSpeciality();
 		int experience = doctor.getExperience();
 		String qualification = doctor.getQualification();
-		Time arrivalTime = doctor.getArrivalTime();
-		Time leavingTime = doctor.getLeavingTime();
+		String arrivalTime = doctor.getArrivalTime();
+		String leavingTime = doctor.getLeavingTime();
 		
 		Doctor n = new Doctor();
 		
