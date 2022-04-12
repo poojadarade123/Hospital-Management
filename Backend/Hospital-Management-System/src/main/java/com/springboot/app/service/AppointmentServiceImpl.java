@@ -18,7 +18,8 @@ public class AppointmentServiceImpl implements AppointmentService {
 	@Autowired
 	AppointmentRepository appointmentRepository;
 	
-	
+	@Autowired
+	private EmailSenderService senderService;
 
 	@Override
 	public List<Appointment> getAllApp() {
@@ -126,6 +127,13 @@ public class AppointmentServiceImpl implements AppointmentService {
 		
 		Appointment result = appointmentRepository.save(appoint1);
 		
+  		String email = appoint.getEmail();    
+    		String timeof = appoint.getTimeofapp();    
+    		String dateof = appoint.getDateofapp();    	
+    		String doctoename = appoint.getDoctorname();
+
+		senderService.sendEmail(email, "ClinoCo Hospital", "Your appointment is booked by the Dr. '"+doctoename+"' On date '"+dateof+"' at '"+timeof+"' ,Your patient ID is '"+id+"'");
+
 		if(result != null) {
 			System.out.print("Appointment approved");
 			return 0;
