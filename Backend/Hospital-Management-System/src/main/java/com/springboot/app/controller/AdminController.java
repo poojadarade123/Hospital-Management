@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +29,7 @@ public class AdminController {
 		return adminService.allAdmins();
 	}
 	
-	@GetMapping("/getByAdminid/{adminId}")
+	@GetMapping("/updateByAdminid/{adminId}")
 	public Admin getAdmin(@PathVariable Integer adminId)
 	{
 		return adminService.getAdminById(adminId);
@@ -45,18 +43,15 @@ public class AdminController {
 	@PostMapping("/adminLogin")
     public int loginAdmin(@RequestBody Admin admin) {  
     
-		return adminService.validate(admin);
-	}
+		boolean checkingLogin=adminService.validate(admin);
+		
+		if(checkingLogin) {
+			System.out.println("login successfull");
+		    return 0;
+		}
+		System.out.println("login failed");
+		return 1;
 	
-	@PutMapping("/editAdmin/{adminId}")
-	public int update(@PathVariable int adminId, @RequestBody Admin admin) {
-		return adminService.updateAdmin(adminId, admin);
-	}
-	
-	@DeleteMapping("/deleteAdmin/{adminId}")
-    public int delete(@PathVariable int adminId) { 		
-		return adminService.deleteAdmin(adminId);
-        
-    }  
+	    }
 	
 }

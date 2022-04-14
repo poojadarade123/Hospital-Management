@@ -13,10 +13,6 @@ public interface AdminService {
 	
 	public int saveAdmins(Admin admin);
 	
-	public int validate(Admin admin);
-	
-	public int updateAdmin(int adminId, Admin admin);
-	
-	public int deleteAdmin(int adminId);
+	public boolean validate(Admin admin);
 
 }

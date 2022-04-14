@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
+
 //@FilterDef(
 //	    name="email",
 //	    parameters=@ParamDef(
@@ -65,6 +69,8 @@ public class Appointment {
 	@NotNull
 	private String patientProblem;
 	
+	
+	private String status;
 
 	public int getId() {
 		return id;
@@ -145,6 +151,15 @@ public class Appointment {
 	public void setPatientProblem(String patientProblem) {
 		this.patientProblem = patientProblem;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	
 	
 

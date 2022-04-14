@@ -48,9 +48,11 @@ public class DoctorServiceImpl implements DoctorService{
 		n.setName(name);
 		n.setEmail(email);
 		n.setMobileNo(mobileNo);
+		
 		n.setSpeciality(speciality);
 		n.setExperience(experience);
 		n.setQualification(qualification);
+		
 		n.setArrivalTime(arrivalTime);
 		n.setLeavingTime(leavingTime);
 		
@@ -64,57 +66,24 @@ public class DoctorServiceImpl implements DoctorService{
 	}
 
 	@Override
-	public int validate(Doctor doctor) {
+	public Doctor validate(Doctor doctor) {
 		String email = doctor.getEmail();
 		String password = doctor.getPassword();
+		System.out.println(email);
 		
-		Doctor validDoctor = doctorRepository.findByEmailAndPassword(email, password);
+		return doctorRepository.findByEmailAndPassword(email, password);
 		
-		if(validDoctor!=null) {
-			System.out.println("login successfull");
-			return 0;
-		}else {
-			System.out.println("login failed");
-			return 1;
-		}
-
+//		if(validDoctor!=null)
+//			return true;
+//		
+//		return false;
 	}
 
 	@Override
-	public int updateDoctor(int doctorId, Doctor doctor) {
-		Doctor doctor1 =doctorRepository.findById(doctorId).orElse(null);
+	public List<String> allSpeciality() {
 		
-		doctor1.setName(doctor.getName());
-		doctor1.setPassword(doctor.getPassword());
-		doctor1.setConfirmPassword(doctor.getConfirmPassword());
-		doctor1.setEmail(doctor.getEmail());
-		doctor1.setMobileNo(doctor.getMobileNo());
-		doctor1.setSpeciality(doctor.getSpeciality());
-		doctor1.setQualification(doctor.getQualification());
-		doctor1.setExperience(doctor.getExperience());
-		doctor1.setArrivalTime(doctor.getArrivalTime());
-		doctor1.setLeavingTime(doctor.getLeavingTime());
-		
-		Doctor result = doctorRepository.save(doctor1);
-		
-		  if(result != null) {
-				System.out.println("Record updated");
-				return 0;	
-				} 		   
-		return 1;
-
+		return doctorRepository.getDistinctDoctorsBySpeciality();
 	}
 
-	@Override
-	public int deleteDoctor(int doctorId) {
-		doctorRepository.deleteById(doctorId);
-		System.out.println("Doctor Deleted");
-		return 0;
-	}
-
-	@Override
-	public List<Doctor> getDoctorByName(String name) {
-		return doctorRepository.findDoctorByName(name);
-	}
-
+	
 }
