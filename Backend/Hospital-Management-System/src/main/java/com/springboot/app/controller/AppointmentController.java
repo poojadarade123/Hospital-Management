@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.entities.Appointment;
+import com.springboot.app.entities.User;
 import com.springboot.app.service.AppointmentService;
 
 

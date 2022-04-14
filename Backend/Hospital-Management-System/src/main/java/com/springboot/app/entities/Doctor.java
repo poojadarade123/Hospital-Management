@@ -29,7 +29,9 @@ public class Doctor {
 	
 	@NotNull
 	private String name;
-
+	
+	
+	
 	@NotNull
 	
 	private String email;
