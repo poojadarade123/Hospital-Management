@@ -44,10 +44,10 @@ public class DoctorController {
 		return doctorService.saveDoctors(doctor);
 	}
 	
-	@PostMapping("/doctorLogin")
-	public int loginDoctor(@RequestBody Doctor doctor) {
-		return doctorService.validate(doctor);
-	}
+//	@PostMapping("/doctorLogin")
+//	public int loginDoctor(@RequestBody Doctor doctor) {
+//		return doctorService.validate(doctor);
+//	}
 	
 	@PutMapping("/editDoctor/{doctorId}")
 	public int update(@PathVariable int doctorId, @RequestBody Doctor doctor) {
@@ -57,6 +57,20 @@ public class DoctorController {
 	@DeleteMapping("/deleteDoctor/{doctorId}")
 	public int delete(@PathVariable int doctorId) {
 		return doctorService.deleteDoctor(doctorId);
+	}
+	
+	@PostMapping("/doctorLogin")
+	public Doctor loginDoctor(@RequestBody Doctor doctor) {
+		System.out.println("login successfull");
+		 return doctorService.validate(doctor);
+		
+
+		
+	}
+	
+	@GetMapping("/allSpeciality")
+	public List<String> getAllSpeciality(){
+		return doctorService.allSpeciality();
 	}
 	
 }

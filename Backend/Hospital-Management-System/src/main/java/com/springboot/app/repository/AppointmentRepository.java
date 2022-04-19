@@ -14,6 +14,8 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Integer
 
 	//@Query("SELECT e from Appointment e where e.email =:emailID")       // using @query
     List<Appointment> findByEmail(String email);
+    
+    List<Appointment> findByDoctorname(String doctorname);
 	
 	//@Query("SELECT e from Appointment e where e.speciality =:speciality")       // using @query
     List<Appointment> findBySpeciality(@Param("speciality") String speciality);

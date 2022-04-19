@@ -18,7 +18,6 @@ import org.springframework.http.MediaType;
 import com.springboot.app.entities.User;
 import com.springboot.app.service.UserService;
 
-
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
@@ -43,7 +42,6 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-
 	public int loginUser(@RequestBody User user) {
 
 		return userService.validate(user);

@@ -3,6 +3,7 @@ package com.springboot.app.service;
 import java.util.List;
 
 import com.springboot.app.entities.Appointment;
+import com.springboot.app.entities.User;
 
 
 public interface AppointmentService {
@@ -20,5 +21,7 @@ public interface AppointmentService {
 	public int deleteAppoint(int id);
 	
 	public int approveApp(int id,Appointment appoint);
+	
+	public List<Appointment> getAppByDoctor(String doctorname); 
 
 }

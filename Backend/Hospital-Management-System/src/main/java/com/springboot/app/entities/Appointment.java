@@ -8,29 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-//@FilterDef(
-//	    name="email",
-//	    parameters=@ParamDef(
-//	        name="emailID",
-//	        type="String"
-//	    )
-//	)
-//	@Filter(
-//	    name="email",
-//	    condition="email=:emailID"
-//	)
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.ParamDef;
 
-//@FilterDef(
-//	    name="speciality",
-//	    parameters=@ParamDef(
-//	        name="speciality",
-//	        type="String"
-//	    )
-//	)
-//	@Filter(
-//	    name="speciality",
-//	    condition="speciality=:speciality"
-//	)
 
 @Entity
 @Table(name = "appointments")
@@ -65,6 +46,8 @@ public class Appointment {
 	@NotNull
 	private String patientProblem;
 	
+	
+	private String status;
 
 	public int getId() {
 		return id;
@@ -145,6 +128,15 @@ public class Appointment {
 	public void setPatientProblem(String patientProblem) {
 		this.patientProblem = patientProblem;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	
 	
 

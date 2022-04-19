@@ -63,22 +63,22 @@ public class DoctorServiceImpl implements DoctorService{
 		
 	}
 
-	@Override
-	public int validate(Doctor doctor) {
-		String email = doctor.getEmail();
-		String password = doctor.getPassword();
-		
-		Doctor validDoctor = doctorRepository.findByEmailAndPassword(email, password);
-		
-		if(validDoctor!=null) {
-			System.out.println("login successfull");
-			return 0;
-		}else {
-			System.out.println("login failed");
-			return 1;
-		}
-
-	}
+//	@Override
+//	public int validate(Doctor doctor) {
+//		String email = doctor.getEmail();
+//		String password = doctor.getPassword();
+//		
+//		Doctor validDoctor = doctorRepository.findByEmailAndPassword(email, password);
+//		
+//		if(validDoctor!=null) {
+//			System.out.println("login successfull");
+//			return 0;
+//		}else {
+//			System.out.println("login failed");
+//			return 1;
+//		}
+//
+//	}
 
 	@Override
 	public int updateDoctor(int doctorId, Doctor doctor) {
@@ -115,6 +115,26 @@ public class DoctorServiceImpl implements DoctorService{
 	@Override
 	public List<Doctor> getDoctorByName(String name) {
 		return doctorRepository.findDoctorByName(name);
+	}
+	
+	@Override
+	public Doctor validate(Doctor doctor) {
+		String email = doctor.getEmail();
+		String password = doctor.getPassword();
+		System.out.println(email);
+		
+		return doctorRepository.findByEmailAndPassword(email, password);
+		
+//		if(validDoctor!=null)
+//			return true;
+//		
+//		return false;
+	}
+	
+	@Override
+	public List<String> allSpeciality() {
+		
+		return doctorRepository.getDistinctDoctorsBySpeciality();
 	}
 
 }

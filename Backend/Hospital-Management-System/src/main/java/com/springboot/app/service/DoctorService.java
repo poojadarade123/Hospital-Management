@@ -12,12 +12,16 @@ public interface DoctorService {
 	
 	public int saveDoctors(Doctor doctor);
 	
-	public int validate(Doctor doctor);
+//	public int validate(Doctor doctor);
 	
 	public int updateDoctor(int doctorId, Doctor doctor);
 	
 	public int deleteDoctor(int doctorId);
 	
 	public List<Doctor> getDoctorByName(String name);
+	
+	public Doctor validate(Doctor doctor);
+	
+	public List<String> allSpeciality();
 
 }
