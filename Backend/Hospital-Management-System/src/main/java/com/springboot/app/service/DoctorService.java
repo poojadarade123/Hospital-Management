@@ -11,6 +11,8 @@ public interface DoctorService {
 	public Doctor getDoctorById(int doctorId);
 	
 	public int saveDoctors(Doctor doctor);
+  
+  public Doctor validate(Doctor doctor);
 	
 //	public int validate(Doctor doctor);
 	
@@ -19,8 +21,6 @@ public interface DoctorService {
 	public int deleteDoctor(int doctorId);
 	
 	public List<Doctor> getDoctorByName(String name);
-	
-	public Doctor validate(Doctor doctor);
 	
 	public List<String> allSpeciality();
 
