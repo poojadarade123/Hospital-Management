@@ -21,5 +21,7 @@ public interface AppointmentService {
 	public int deleteAppoint(int id);
 	
 	public int approveApp(int id,Appointment appoint);
+	
+	public List<Appointment> getAppByDoctor(String doctorname); 
 
 }

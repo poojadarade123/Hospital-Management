@@ -44,29 +44,17 @@ public class DoctorController {
 		return doctorService.saveDoctors(doctor);
 	}
 	
+	
 	@PostMapping("/doctorLogin")
 	public Doctor loginDoctor(@RequestBody Doctor doctor) {
 		System.out.println("login successfull");
 		 return doctorService.validate(doctor);
 		
-//		if(checkingLogin) {
-//			System.out.println("login successfull");
-//		    return 0;
-//		}
-//		System.out.println("login failed");
-//		return 1;
-		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@GetMapping("/allSpeciality")
+	public List<String> getAllSpeciality(){
+		return doctorService.allSpeciality();
+	}
 	
 }

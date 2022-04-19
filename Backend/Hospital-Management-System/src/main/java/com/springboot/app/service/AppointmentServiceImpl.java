@@ -147,6 +147,12 @@ public class AppointmentServiceImpl implements AppointmentService {
 			return 1;
 	}
 
+	@Override
+	public List<Appointment> getAppByDoctor(String doctorname) {
+		
+		return appointmentRepository.findByDoctorname(doctorname);
+	}
+
 	
 
 }

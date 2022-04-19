@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "doctors")
 public class Doctor {
 	
-	private static final String unique = null;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +32,7 @@ public class Doctor {
 	
 	
 	@NotNull
-	
+	@Column(unique = true)
 	private String email;
 	
 	@Column(length=10)

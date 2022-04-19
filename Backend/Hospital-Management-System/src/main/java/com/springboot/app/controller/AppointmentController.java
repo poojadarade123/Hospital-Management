@@ -41,6 +41,12 @@ public class AppointmentController {
 		return appointmentService.getAppByEmail(email);
 	}
 	
+	@GetMapping("/appointBydoctor/{doctorname}")
+	public List<Appointment> getAllByDoctor(@PathVariable String doctorname)
+	{
+		return appointmentService.getAppByDoctor(doctorname);
+	}
+	
 	@GetMapping("/appointbySpeciality/{speciality}")
 	public List<Appointment> getAllBySpeciality(@PathVariable String speciality)
 	{

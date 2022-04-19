@@ -12,29 +12,7 @@ import org.hibernate.annotations.Filter;
 import org.hibernate.annotations.FilterDef;
 import org.hibernate.annotations.ParamDef;
 
-//@FilterDef(
-//	    name="email",
-//	    parameters=@ParamDef(
-//	        name="emailID",
-//	        type="String"
-//	    )
-//	)
-//	@Filter(
-//	    name="email",
-//	    condition="email=:emailID"
-//	)
 
-//@FilterDef(
-//	    name="speciality",
-//	    parameters=@ParamDef(
-//	        name="speciality",
-//	        type="String"
-//	    )
-//	)
-//	@Filter(
-//	    name="speciality",
-//	    condition="speciality=:speciality"
-//	)
 
 @Entity
 @Table(name = "appointments")
@@ -47,7 +25,6 @@ public class Appointment {
 	private String name;
 	
 	@NotNull
-	@Column(unique=true)
 	private String email;
 	
 	@NotNull
