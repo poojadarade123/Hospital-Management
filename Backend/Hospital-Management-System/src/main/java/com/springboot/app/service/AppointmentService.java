@@ -3,12 +3,12 @@ package com.springboot.app.service;
 import java.util.List;
 
 import com.springboot.app.entities.Appointment;
-import com.springboot.app.entities.User;
-
 
 public interface AppointmentService {
 	
 	public List<Appointment> getAllApp(); 
+	
+	public Appointment getAppById(int id);
 	
 	public List<Appointment> getAppByEmail(String email); 
 	

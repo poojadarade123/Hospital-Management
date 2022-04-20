@@ -11,13 +11,10 @@ import com.springboot.app.entities.Doctor;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor,Integer> {
 	
-	Doctor findByEmailAndPassword(String email, String password);
-	
-	@Query("SELECT DISTINCT d.speciality FROM Doctor d")
-	List<String> getDistinctDoctorsBySpeciality();
-
+	Doctor findByEmailAndPassword(String email, String passwordString);
 
 	List<Doctor> findDoctorByName(String name);
 	
-
+	@Query("SELECT DISTINCT d.speciality FROM Doctor d")
+	List<String> getDistinctDoctorsBySpeciality();
 }
