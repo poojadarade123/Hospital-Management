@@ -19,7 +19,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 	AppointmentRepository appointmentRepository;
 	
 	@Autowired
-	EmailSenderService senderService;
+	private EmailSenderService senderService;
 
 	@Override
 	public List<Appointment> getAllApp() {
@@ -56,7 +56,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 		String prescription = appoint.getPrescription();
 		String paymentStatus = appoint.getPaymentStatus();
 		String patientProblem = appoint.getPatientProblem();
-		String status = appoint.getStatus();
 		
 		Appointment app = new Appointment();
 		app.setName(name);
@@ -68,7 +67,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 		app.setPrescription(prescription);
 		app.setPaymentStatus(paymentStatus);
 		app.setPatientProblem(patientProblem);
-		app.setStatus(status);
 		
 		Appointment result = appointmentRepository.save(app);
 		
@@ -93,7 +91,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 		appoint1.setPrescription(appoint.getPrescription());
 		appoint1.setPaymentStatus(appoint.getPaymentStatus());
 		appoint1.setPatientProblem(appoint.getPatientProblem());
-		appoint1.setStatus(appoint.getStatus());
 		
 		Appointment result = appointmentRepository.save(appoint1);
 		
@@ -125,19 +122,18 @@ public class AppointmentServiceImpl implements AppointmentService {
 		appoint1.setDoctorname(appoint.getDoctorname());
 		appoint1.setPrescription(appoint.getPrescription());
 		appoint1.setPaymentStatus(appoint.getPaymentStatus());
-		appoint1 .setStatus(appoint.getStatus());
 		
   
 		
 		Appointment result = appointmentRepository.save(appoint1);
 		
-		String email = appoint.getEmail();    
-		String timeof = appoint.getTimeofapp();    
-		String dateof = appoint.getDateofapp();    	
-		String doctoename = appoint.getDoctorname();
+  		String email = appoint.getEmail();    
+    		String timeof = appoint.getTimeofapp();    
+    		String dateof = appoint.getDateofapp();    	
+    		String doctoename = appoint.getDoctorname();
 
-	senderService.sendEmail(email, "ClinoCo Hospital", "Your appointment is booked by the Dr. '"+doctoename+"' On date '"+dateof+"' at '"+timeof+"' ,Your patient ID is '"+id+"'");
-		
+		senderService.sendEmail(email, "ClinoCo Hospital", "Your appointment is booked by the Dr. '"+doctoename+"' On date '"+dateof+"' at '"+timeof+"' ,Your patient ID is '"+id+"'");
+
 		if(result != null) {
 			System.out.print("Appointment approved");
 			return 0;
@@ -145,12 +141,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 			} 
 			
 			return 1;
-	}
-
-	@Override
-	public List<Appointment> getAppByDoctor(String doctorname) {
-		
-		return appointmentRepository.findByDoctorname(doctorname);
 	}
 
 	
