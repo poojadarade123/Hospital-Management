@@ -8,11 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.annotations.Filter;
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.ParamDef;
-
-
 
 @Entity
 @Table(name = "appointments")
@@ -25,6 +20,7 @@ public class Appointment {
 	private String name;
 	
 	@NotNull
+	@Column(unique=true)
 	private String email;
 	
 	@NotNull

@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.springboot.app.entities.Appointment;
-
 import com.springboot.app.repository.AppointmentRepository;
 
 
@@ -32,12 +31,6 @@ public class AppointmentServiceImpl implements AppointmentService {
 		
 		return appointmentRepository.findByEmail(email);
 	}
-
-//	@Override
-//	public List<Appointment> getAppByEmail(String email) {
-//		
-//		return appointmentRepository.findByEmail(email);
-//	}
 
 	@Override
 	public List<Appointment> getAppBySpeciality(String speciality) {
@@ -151,6 +144,12 @@ public class AppointmentServiceImpl implements AppointmentService {
 	public List<Appointment> getAppByDoctor(String doctorname) {
 		
 		return appointmentRepository.findByDoctorname(doctorname);
+	}
+
+	@Override
+	public Appointment getAppById(int id) {
+		
+		return appointmentRepository.findById(id).orElse(null);
 	}
 
 	

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.app.entities.Appointment;
-import com.springboot.app.entities.User;
 import com.springboot.app.service.AppointmentService;
 
 
@@ -33,6 +32,11 @@ public class AppointmentController {
 	public List<Appointment> getAllAppointments()
 	{
 		return appointmentService.getAllApp();
+	}
+	
+	@GetMapping("/getByappointid/{id}")
+	public Appointment getAppoint(@PathVariable int id) {
+		return appointmentService.getAppById(id);
 	}
 	
 	@GetMapping("/appointByEmail/{email}")
