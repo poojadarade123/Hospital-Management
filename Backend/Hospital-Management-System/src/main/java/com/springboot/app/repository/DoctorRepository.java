@@ -11,7 +11,7 @@ import com.springboot.app.entities.Doctor;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor,Integer> {
 	
-	Doctor findByEmailAndPassword(String email, String passwordString);
+	Doctor findByEmailAndPassword(String email, String password);
 
 	List<Doctor> findDoctorByName(String name);
 	
